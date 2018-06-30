@@ -8,7 +8,44 @@
 
 	<style>
 		body{
-			background-color: #99b3ff;
+			background-color: rgb(235, 235, 235);
+			margin: 0;
+			color: rgb(110, 110, 110);
+			font-weight: bold;
+			font-family: Calibri , sans-serif;
+			letter-spacing: 1px;
+		}
+		div#Container{
+			background-color: white;
+			margin: 6% 31.7%;
+			width: 36.6%;
+			height: 540px;
+		}
+
+		div#Container p,h1{
+			text-align: center;
+			margin: 0;
+		}
+
+		.SameWidth{
+			width: 90%;
+			border-radius: 5px;
+			margin-bottom: 1em;
+			margin-left: 5%;
+			height: 30px;
+			border: 2px solid grey;
+			letter-spacing: inherit;
+		}
+		input[type=submit]{
+			background-color:rgb(43, 180, 180);
+			width: 30%;
+			border: none;
+			height: 50px;
+			border-radius: 5px;
+			margin-left: 35%;
+			color: white;
+			letter-spacing: inherit;
+			font-size: 18px;
 		}
 	</style>
 
@@ -16,24 +53,45 @@
 
 <body>
 
-<form action="" method="get">
-	<label for="firstname">First Name</label>
-	<input type="text" id="firstname" placeholder="First Name">
+	<div id="Container">
+		
 		<br>
-	<label for="lastname">Last Name</label>
-	<input type="text" id="lastname" placeholder="Last Name">
+
+		<h1>Contact Us</h1>
+		<p>How can we help you?</p>
+
 		<br>
-	<label for="email">Email Id</label>
-	<input type="email" id="email" placeholder="Enter Email Id">
-		<br>
-	<label for="subject">Subject</label>
-	<input type="text" id="subject" placeholder="Enter Subject">
-		<br>
-	<label for="content">Content</label>
-	<textarea rows="4" cols="50" placeholder="Write your words here"></textarea>
-		<br>
-	<input type="button" value="Submit">
-</form>
+
+		<form action="" method="get" id="main_form">
+	
+			<input type="text" id="firstname" placeholder="Your Name" class="SameWidth">
+				
+			<br>
+				
+			<input type="email" id="email" placeholder="Your email address" class="SameWidth">
+				
+			<br>
+				
+			<input type="text" id="mobile" placeholder="Phone Number" class="SameWidth">
+				
+			<br>
+				
+			<input type="text" id="companyname" placeholder="Company" class="SameWidth">
+			
+			<br>
+			
+			<input type="text" id="subject" placeholder="Your Subject" class="SameWidth">
+				
+			<br>
+				
+			<textarea placeholder="Your message" class="SameWidth" style="height: 100px;"></textarea>
+				
+			<br>
+				
+			<input type="submit" value="Submit">
+			
+		</form>
+	</div>
 
 </body>
 
