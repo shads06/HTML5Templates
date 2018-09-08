@@ -19,7 +19,8 @@ p {
 <body>
 <p id="Timer"></p>
 <script>
-var deadline = new Date("September 09, 2050 00:00:00").getTime();
+var CurrentTime = new Date().getTime();
+var deadline = new Date(CurrentTime + 30000).getTime(); <!-- CurrentTime will have current time value in mili second since 1 Jan 1970 and + 30000 is adding 30 seconds in mili seconds. This code will always show 30 secs timer every time some one refresh the page-->
 var x = setInterval(function() {
 var now = new Date().getTime();
 var t = deadline - now;
