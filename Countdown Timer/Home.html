@@ -6,6 +6,49 @@
 p {
   text-align: center;
   font-size: 60px;
+  margin: 0;
+}
+
+body{
+  text-align:center;
+  background-color: #00ECB9;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+h1{
+  color: #195F63;
+  font-weight: 100;
+  font-size: 40px;
+  margin-left: 40px 0px 20px;
+}
+
+#ClockDiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#ClockDiv > div{
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #00BF96;
+  display: inline-block;
+}
+
+#ClockDiv div > span{
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #00816A;
+  display: inline-block;
+}
+
+smalltext{
+  padding-top: 5px;
+  font-size: 16px;
 }
 
 #EventButton{
@@ -17,25 +60,54 @@ p {
 </style>
 </head>
 <body>
-<p id="Timer"></p>
-<script>
-var CurrentTime = new Date().getTime();
-var eventDate = new Date(CurrentTime + 30000).getTime(); <!-- CurrentTime will have current time value in mili second since 1 Jan 1970 and + 30000 is adding 30 seconds in mili seconds. This code will always show 30 secs timer every time some one refresh the page-->
-var x = setInterval(function() {
-var now = new Date().getTime();
-var TimeLeftforEvent = eventDate - now;
-var days = Math.floor(TimeLeftforEvent / (1000 * 60 * 60 * 24));
-var hours = Math.floor((TimeLeftforEvent%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((TimeLeftforEvent % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((TimeLeftforEvent % (1000 * 60)) / 1000);
-document.getElementById("Timer").innerHTML = days + "d "
-+ hours + "h " + minutes + "m " + seconds + "s ";
-    if (TimeLeftforEvent < 0) {
-        clearInterval(x);
-        document.getElementById("Timer").innerHTML = "<button id='EventButton'>Register</button>";
-    }
-}, 1000);
-</script>
+  <h1 id="Register">Registration Starting In</h1>
+  <div id="ClockDiv">
+    <div>
+      <span class="days" id="day"></span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div>
+      <span class="hours" id="hour"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span class="minutes" id="minute"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds" id="second"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+  <p id="TimerExpired"></p>
+
+  <script>
+    var CurrentTime = new Date().getTime();
+    var eventDate = new Date(CurrentTime + 30000).getTime(); <!-- CurrentTime will have current time value in mili second since 1 Jan 1970 and + 30000 is adding 30 seconds in mili seconds. This code will always show 30 secs timer every time some one refresh the page-->
+    var x = setInterval(function() {
+    var now = new Date().getTime();
+    var TimeLeftforEvent = eventDate - now;
+    var days = Math.floor(TimeLeftforEvent / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((TimeLeftforEvent%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+    var minutes = Math.floor((TimeLeftforEvent % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((TimeLeftforEvent % (1000 * 60)) / 1000);
+    document.getElementById("day").innerHTML = days;
+    document.getElementById("hour").innerHTML = hours;
+    document.getElementById("minute").innerHTML = minutes;
+    document.getElementById("second").innerHTML = seconds;
+      if (TimeLeftforEvent < 0) {
+          clearInterval(x);
+          document.getElementById("TimerExpired").innerHTML = "<button id='EventButton'>Register</button>";
+          document.getElementById("day").innerHTML = 0;
+          document.getElementById("hour").innerHTML = 0;
+          document.getElementById("minute").innerHTML = 0;
+          document.getElementById("second").innerHTML = 0;
+          document.getElementById("Register").innerHTML = "REGISTER NOW";
+          var element = document.getElementById("ClockDiv");
+          element.parentNode.removeChild(element);
+        }
+      }, 1000);
+    </script>
 
 </body>
 </html>
