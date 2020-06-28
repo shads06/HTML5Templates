@@ -1,7 +1,12 @@
 
 <!DOCTYPE HTML>
+
 <html>
+
 <head>
+
+<base href="img/" target="_self">
+
 <style>
 p {
   text-align: center;
@@ -57,33 +62,77 @@ smalltext{
   border-radius: 5px;
   font-size: 20px;
 }
+
+#New_year_hat{
+  position: relative;
+  transform: rotate(-25deg);
+  width: 70px;
+  height: 70px;
+  top: -80px;
+  left: -530px;
+}
 </style>
+
 </head>
+
 <body>
-  <h1 id="Register">Registration Starting In</h1>
+
+  <!--
+    Heading to show New Year Title
+  -->
+  <h1 id="Register">
+
+    <!--
+      To show the previous text which is now deleted
+      This text will be shown in different color from the new text
+    -->
+    <del>Registration Starting In</del>
+
+    <!-- To show new text in new line to make heading look better and not attached with deleted text -->
+    <br/>
+
+    <!--
+      New text covered around span element to give different style and look if required
+    -->
+  <span>New Year 2020</span>
+
+</h1>
+
+<!--
+  A seperate container/area for holding all the elements to show timer
+  -->
   <div id="ClockDiv">
+
     <div>
       <span class="days" id="day"></span>
       <div class="smalltext">Days</div>
     </div>
+    
     <div>
       <span class="hours" id="hour"></span>
       <div class="smalltext">Hours</div>
     </div>
+    
     <div>
       <span class="minutes" id="minute"></span>
       <div class="smalltext">Minutes</div>
     </div>
+    
     <div>
       <span class="seconds" id="second"></span>
       <div class="smalltext">Seconds</div>
     </div>
+    
+    <firgure>
+    <img src="New_year_hat.gif" id="New_year_hat" alt="Happy New Year Hat" />
+    </firgure>
   </div>
+
   <p id="TimerExpired"></p>
 
   <script>
     var CurrentTime = new Date().getTime();
-    var eventDate = new Date(CurrentTime + 30000).getTime(); <!-- CurrentTime will have current time value in mili second since 1 Jan 1970 and + 30000 is adding 30 seconds in mili seconds. This code will always show 30 secs timer every time some one refresh the page-->
+    var eventDate = new Date("01/01/2020").getTime(); <!-- CurrentTime will have current time value in mili second since 1 Jan 1970 and + 30000 is adding 30 seconds in mili seconds. This code will always show 30 secs timer every time some one refresh the page-->
     var x = setInterval(function() {
     var now = new Date().getTime();
     var TimeLeftforEvent = eventDate - now;
